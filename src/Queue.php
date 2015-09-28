@@ -21,7 +21,7 @@ class Queue {
 
         $this->client->connect();
         $this->client->useTube($this->tube);
-        $this->client->put(
+        $jobId = $this->client->put(
             $priority,
             $delay,  // Do not wait to put job into the ready queue.
             $ttr, // Give the job 1 minute to run.
@@ -29,6 +29,8 @@ class Queue {
         );
 
         $this->client->disconnect();
+
+        return $jobId;
     }
 }
 
