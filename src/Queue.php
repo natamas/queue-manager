@@ -13,7 +13,7 @@ class Queue {
         $this->tube = $tube;
     }
 
-    public function put($worker,$payload,$delay=0,$priority=1,$ttr=0){
+    public function put($worker,$payload,$delay=0,$priority=1,$ttr=60){
         $job = array(
             'type' => $worker,
             'payload' => $payload
